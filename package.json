@@ -2,7 +2,7 @@
   "name": "ebay",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "download.js",
   "type": "module",
   "scripts": {
     "process:download": "node download.js",
