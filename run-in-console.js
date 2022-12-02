@@ -1,7 +1,5 @@
 // https://www.pricecharting.com/console/apple-iphone
 
-const releaseDate = new Date().toISOString().split("T")[0];
-
 const downloadObjectAsJson = (exportObj, exportName) => {
   const dataStr =
     "data:text/json;charset=utf-8," +
@@ -54,7 +52,7 @@ const getElements = () => {
     } else {
       stop = true;
 
-      downloadObjectAsJson({ items: getElements() }, `products-${releaseDate}`);
+      downloadObjectAsJson({ items: getElements() }, `products`);
     }
   };
   load();

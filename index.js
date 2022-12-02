@@ -1,6 +1,3 @@
-// fetch("http://127.0.0.1:5500/products/products-2022-12-02.json")
-//   .then((res) => res.json())
-//   .then((json) => {
-//     //json vaiable contains object with data
-//     console.log(json);
-//   });
+fetch('https://shaneiadt.github.io/ebay-iphone-valuator/products/products.json')
+    .then((response) => response.json())
+    .then((data) => console.log(data));
