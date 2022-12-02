@@ -2,12 +2,8 @@
   "name": "ebay",
   "version": "1.0.0",
   "description": "",
-  "main": "download.js",
+  "main": "run-in-console.js",
   "type": "module",
-  "scripts": {
-    "process:download": "node download.js",
-    "start": "run-s process:*"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
