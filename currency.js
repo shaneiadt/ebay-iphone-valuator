@@ -19,8 +19,4 @@ async function getExchangeRate() {
   return rates.quotes["USDEUR"].end_rate;
 }
 
-const rate = await getExchangeRate();
-const dollars = 100;
-const euros = (dollars * rate).toFixed(2);
-
-console.log(euros);
+export default getExchangeRate;

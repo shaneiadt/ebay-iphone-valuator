@@ -1,10 +1,15 @@
 import requestPromise from "request-promise";
 import * as cheerio from "cheerio";
 import { writeFile } from "fs";
+import getExchangeRate from "./currency.js";
 
 async function scrape() {
+  console.log("Fetching exchange rate...");
+
+  const rate = await getExchangeRate();
+
   console.log("Downloading...");
-  
+
   const releaseDate = new Date().toISOString().split("T")[0];
   const items = [];
   const paginationMax = 500;
@@ -18,9 +23,21 @@ async function scrape() {
       const id = $(product).attr("id");
       const title = $(`#${id} .title`).text().trim();
       const url = $(`#${id} .title a`).attr("href");
-      const usedPrice = $(`#${id} .used_price`).text().trim();
-      const refurbPrice = $(`#${id} .cib_price`).text().trim();
-      const newPrice = $(`#${id} .new_price`).text().trim();
+      const usedPrice =
+        "€" +
+        ($(`#${id} .used_price`).text().replace("$", "").trim() * rate).toFixed(
+          2
+        );
+      const refurbPrice =
+        "€" +
+        ($(`#${id} .cib_price`).text().replace("$", "").trim() * rate).toFixed(
+          2
+        );
+      const newPrice =
+        "€" +
+        ($(`#${id} .new_price`).text().replace("$", "").trim() * rate).toFixed(
+          2
+        );
       const tags = [
         title.split("[")[0].toLowerCase().trimEnd(),
         ...title.replace("]", "").split("[")[1].toLowerCase().split(" "),
